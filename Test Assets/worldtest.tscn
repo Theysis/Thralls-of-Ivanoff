@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Test Assets/PlayerTest.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Test Assets/worldtest.gd" type="Script" id=3]
+
+[node name="worldtest" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="playertest" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 8 )
+
+[node name="transition" parent="playertest" index="4"]
+visible = false
+
+[node name="menu" type="Control" parent="."]
+visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="menu"]
+margin_right = 40.0
+margin_bottom = 40.0
+[connection signal="tween_completed" from="playertest/Tween" to="." method="_on_Tween_tween_completed"]
+
+[editable path="playertest"]

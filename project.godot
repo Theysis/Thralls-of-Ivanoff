@@ -19,12 +19,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://BattleArena.gd"
 }, {
-"base": "Node2D",
+"base": "TurnQueue",
 "class": "Fighters",
 "language": "GDScript",
 "path": "res://Fighters.gd"
 }, {
-"base": "Node",
+"base": "BattleArena",
 "class": "TurnQueue",
 "language": "GDScript",
 "path": "res://TurnQueue.gd"

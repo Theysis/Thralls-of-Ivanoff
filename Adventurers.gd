@@ -5,9 +5,10 @@ extends Fighters
 # var b = "text"
 class_name Adventurers
 
-
-func PlayerAttack():
+func initialize():
+	var isPartyMember : bool = true
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	
+func PlayerAttack():
+	 pass
+

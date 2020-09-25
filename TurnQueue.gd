@@ -1,4 +1,4 @@
-extends Node
+extends BattleArena
 
 
 # Declare member variables here. Examples:
@@ -6,21 +6,52 @@ extends Node
 # var b = "text"
 class_name TurnQueue
 
-var activeCharacter
+onready var activeCharacter
 
 func initialize():
+	var fighters = getParty()
+	Fighters.sort_custom(self, 'sort_battlers')
+	for fighter in Fighters :
+		fighter.raise()
 	activeCharacter = get_child(0)
-	
-func current_turn(): 
+
+static func sort_Fighters(a : Fighters, b : Fighters) -> bool:
+	return a.agil > b.agil
+
+func current_turn(target : Fighters, action): 
 	yield(activeCharacter.current_turn(), "completed")
+	action.execute(self, target)
 	var new_index : int = (activeCharacter.get_index() + 1) % get_child_count() 
 	activeCharacter = get_child(new_index)
 	
-func player_turn(target : Fighters, action : combat_action):
-	pass
-	
-	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+# Establishes order of Fighters
+func print_queue() :
+	var string : String
+	for fighter in get_children():
+		string += fighter.name + "(%s)" % fighter.agil + " "
+	print(string)
+
+func skipTurn() :
+	nextFighter()
+
+func nextFighter() :
+	var nextBattlerIndex : int = (activeCharacter.get_index() + 1) % get_child_count()
+	activeCharacter = get_child(nextBattlerIndex)
+	emit_signal('queue_changed', getFighter(), activeCharacter)
+	
+func getParty() -> Array:
+	return party
+
+func getMonsters() :
+	return getTargets(false)
+
+func getFighter() :
+	return get_children()
+
+func getTargets(in_party: bool = false) -> Array:
+	var targets: Array = []
+	for child in get_children():
+			if child.party_member == in_party && child.MaxHP > 0:
+					targets.append(child)
+	return targets

@@ -1,20 +1,24 @@
-extends Node2D
+extends TurnQueue
 
 class_name Fighters
 
 # Defines variables for character stats
-var st # Strength Stat
-var agil # Agility
-var def # Defence
-var intel # Intelligence
-var HP # Health
-var MP # Magic Points / Ability Points
-var fighter = [HP, MP, st, agil, def, intel]
+var name : String = ""
+var st : int = 0 # Strength Stat
+var agil : int = 0  # Agility
+var def : int = 0 # Defence
+var intel : int = 0 # Intelligence
+var MaxHP : int = 0 # Health
+var MaxMP : int = 0 # Magic Points / Ability Points
 
-var runAway
 
 func intitialize() :
-	pass
+	var fighter = [name, MaxHP, MaxMP, st, agil, def, intel]
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func combat_action() :
+	pass

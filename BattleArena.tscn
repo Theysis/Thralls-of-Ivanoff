@@ -1,32 +1,50 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Fighters.gd" type="Script" id=1]
 [ext_resource path="res://Adventurers.gd" type="Script" id=2]
 [ext_resource path="res://BattleArena.gd" type="Script" id=3]
 [ext_resource path="res://TurnQueue.tscn" type="PackedScene" id=4]
+[ext_resource path="res://TurnQueue.gd" type="Script" id=5]
+[ext_resource path="res://Backgrounds/Test_background.jpg" type="Texture" id=6]
 
-[node name="BattleArena" type="Node2D"]
-position = Vector2( 15.1361, -1.68179 )
+[node name="BattleArena" type="Node"]
 script = ExtResource( 3 )
+
+[node name="Temp_background" type="Sprite" parent="."]
+scale = Vector2( 1.74139, 1.52925 )
+texture = ExtResource( 6 )
 
 [node name="Spawn Positions" type="Node" parent="."]
 
 [node name="Party" type="Node" parent="Spawn Positions"]
 
-[node name="1" type="Node" parent="Spawn Positions/Party"]
+[node name="1" type="Position2D" parent="Spawn Positions/Party"]
+position = Vector2( 146.443, -255.6 )
+
+[node name="2" type="Position2D" parent="Spawn Positions/Party"]
+position = Vector2( 255.932, -108.355 )
+
+[node name="3" type="Position2D" parent="Spawn Positions/Party"]
+position = Vector2( 380.523, 50.2155 )
+
+[node name="4" type="Position2D" parent="Spawn Positions/Party"]
+position = Vector2( 507.003, 197.46 )
 
 [node name="Enemy" type="Node" parent="Spawn Positions"]
 
-[node name="TurnQueue" parent="." instance=ExtResource( 4 )]
-position = Vector2( -23.0913, 19.9541 )
+[node name="Enemy 1" type="Position2D" parent="Spawn Positions/Enemy"]
+position = Vector2( -359.01, 8.49005 )
+
+[node name="TurnQueue" type="Node" parent="." instance=ExtResource( 4 )]
+script = ExtResource( 5 )
 
 [node name="Fighters" type="Node2D" parent="TurnQueue"]
-position = Vector2( 25.2269, 33.6358 )
+position = Vector2( 770.38, 95.9925 )
 script = ExtResource( 1 )
 
 [node name="Adventurers" type="Node2D" parent="TurnQueue/Fighters"]
-position = Vector2( 172.683, -20.5675 )
+position = Vector2( 146.255, -207.455 )
 script = ExtResource( 2 )
 
 [node name="Enemy" type="Node2D" parent="TurnQueue/Fighters"]
-position = Vector2( 404.471, 52.9765 )
+position = Vector2( 247.788, -81.0536 )

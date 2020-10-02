@@ -38,10 +38,10 @@ func skipTurn() :
 func nextFighter() :
 	var nextBattlerIndex : int = (activeCharacter.get_index() + 1) % get_child_count()
 	activeCharacter = get_child(nextBattlerIndex)
-	emit_signal('queue_changed', getFighter(), activeCharacter)
+	.emit_signal('queue_changed', getFighter(), activeCharacter)
 	
 func getParty() -> Array:
-	return party
+	return .getParty()
 
 func getMonsters() :
 	return getTargets(false)
@@ -55,3 +55,13 @@ func getTargets(in_party: bool = false) -> Array:
 			if child.party_member == in_party && child.MaxHP > 0:
 					targets.append(child)
 	return targets
+
+func get_child(var o : int) :
+	.get_child(o)
+
+func get_child_count() :
+	.get_child_count();
+
+func get_children() :
+	.get_children();
+

@@ -1,3 +1,4 @@
+
 extends Node
 
 
@@ -22,18 +23,22 @@ func initialize(monsterGroup : Array, party : Array) :
 
 # Begins Battle
 func start_Battle() :
+	yield(play_intro(), "completed")
 	active = true
-	
+	play_turn()
 
 # Transitions into combat
 func play_intro():
-	 
-	pass
+	for fighter in TurnQueue.get_party() :
+		fighter.appear()
+	yield (get_tree().create_timer(0.5), "timeout")
+	for fighter in TurnQueue.get_monsters() :
+		fighter.appear()
+	yield(get_tree().create_timer(0.5), "timeout")
 
 # sets up the combat arena based on the party
 
 func ready_field(monster_buddies : Array, party_members : Array) :
-	
 	pass
 
 func play_turn() :
@@ -54,8 +59,10 @@ func get_targets() -> Array :
 
 # Called when battle ends and transitions back to 
 func end_Battle():
-	yield()
+	emit_signal("battle_ends")
 	active = false
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	var player_won = true # Fix this
+	if player_won:
+		emit_signal("Victory")
+	else:
+		emit_signal("Defeat")

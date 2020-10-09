@@ -9,6 +9,8 @@ func initialize():
 	var isPartyMember : bool = true
 	
 	
+
+
 func PlayerAttack():
 	 pass
 

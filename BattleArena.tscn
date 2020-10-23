@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Fighters.gd" type="Script" id=1]
 [ext_resource path="res://Adventurers.gd" type="Script" id=2]
 [ext_resource path="res://BattleArena.gd" type="Script" id=3]
 [ext_resource path="res://TurnQueue.tscn" type="PackedScene" id=4]
-[ext_resource path="res://TurnQueue.gd" type="Script" id=5]
+[ext_resource path="res://Warrior.gd" type="Script" id=5]
 [ext_resource path="res://Backgrounds/Test_background.jpg" type="Texture" id=6]
 [ext_resource path="res://Backgrounds/Grass.png" type="Texture" id=7]
+[ext_resource path="res://Enemy.gd" type="Script" id=8]
 
 [node name="BattleArena" type="Node"]
 script = ExtResource( 3 )
@@ -47,8 +48,7 @@ position = Vector2( 574.711, 331.095 )
 [node name="Enemy 1" type="Position2D" parent="Spawn Positions/Enemy"]
 position = Vector2( -359.01, 8.49005 )
 
-[node name="TurnQueue" type="Node" parent="." instance=ExtResource( 4 )]
-script = ExtResource( 5 )
+[node name="TurnQueue" parent="." instance=ExtResource( 4 )]
 
 [node name="Fighters" type="Node" parent="TurnQueue"]
 script = ExtResource( 1 )
@@ -57,5 +57,10 @@ script = ExtResource( 1 )
 position = Vector2( -119.233, -449.779 )
 script = ExtResource( 2 )
 
+[node name="DudeGuy" type="Node2D" parent="TurnQueue/Fighters/Adventurers"]
+position = Vector2( 119.233, 449.779 )
+script = ExtResource( 5 )
+
 [node name="Enemy" type="Node2D" parent="TurnQueue/Fighters"]
 position = Vector2( -361.587, 487.34 )
+script = ExtResource( 8 )

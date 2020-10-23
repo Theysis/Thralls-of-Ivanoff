@@ -8,11 +8,16 @@ class_name TurnQueue
 
 onready var activeCharacter
 
-func initialize():
-	var fighters = getParty()
+func _initialize():
+	var party = getParty()
+	var enemies = getMonsters()
 	Fighters.sort_custom(self, 'sort_battlers')
-	for fighter in Fighters :
-		fighter.raise()
+	for Fighters in party :
+		Fighters.isPartyMember(true)
+		Fighters.appear()
+	for Fighters in enemies :
+		Fighters.isPartyMember(false)
+		Fighters.appear()
 	activeCharacter = get_child(0)
 
 static func sort_Fighters(a : Fighters, b : Fighters) -> bool:
@@ -57,11 +62,11 @@ func getTargets(in_party: bool = false) -> Array:
 	return targets
 
 func get_child(var o : int) :
-	.get_child(o)
+	get_child(o)
 
 func get_child_count() :
-	.get_child_count();
+	get_child_count();
 
 func get_children() :
-	.get_children();
+	get_children();
 

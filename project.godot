@@ -19,6 +19,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://BattleArena.gd"
 }, {
+"base": "Adventurers",
+"class": "DudeGuy",
+"language": "GDScript",
+"path": "res://Warrior.gd"
+}, {
+"base": "Node2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Enemy.gd"
+}, {
 "base": "TurnQueue",
 "class": "Fighters",
 "language": "GDScript",
@@ -32,6 +42,8 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Adventurers": "",
 "BattleArena": "",
+"DudeGuy": "",
+"Enemy": "",
 "Fighters": "",
 "TurnQueue": ""
 }
@@ -39,6 +51,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Testing"
+run/main_scene="res://BattleArena.tscn"
 config/icon="res://icon.png"
 
 [rendering]

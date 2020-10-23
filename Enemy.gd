@@ -1,16 +1,12 @@
-extends Fighters
+extends Node2D
 
+class_name Enemy
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-class_name Adventurers
 
-
-func _initialize():
-	var isPartyMember : bool = true
-	
-	
-
+func _intialize() :
+	pass
 
 func getName() -> String : 
 	return ""
@@ -32,7 +28,3 @@ func getDefence() -> int :
 	
 func getIntelligence() -> int :
 	return 0
-
-func PlayerAttack():
-	 pass
-

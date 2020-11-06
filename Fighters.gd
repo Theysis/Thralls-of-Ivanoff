@@ -10,13 +10,15 @@ var def : int = 0 # Defence
 var intel : int = 0 # Intelligence
 var maxHP : int = 0 # Health
 var maxMP : int = 0 # Magic Points / Ability Points
+var currentHP : int = 0
+var currentMP : int = 0
 var align : int # Defines good or evil (evil = 0, good = 1)
 
 
 # Creates the fighter with the specified skills
 func intitialize(align) :
 	if (align == 1) :
-		var person : Adventurers = get_child(0)
+		var person : Adventurers = .get_child(0)
 		pName = person.getName()
 		st = person.getStrength()
 		agil = person.getAgility()
@@ -27,7 +29,7 @@ func intitialize(align) :
 		Fighters.setFighterStats(pName, maxHP, maxMP, st, agil, def, intel) 
 		
 	if (align == 0) :
-		var person : Enemy = get_child(0)
+		var person : Enemy = .get_child(0)
 		pName = person.getName()
 		st = person.getStrength()
 		agil = person.getAgility()

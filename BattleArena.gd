@@ -5,8 +5,8 @@ extends Node
 class_name BattleArena 
 
 var active : bool = false
-var party : Array = []
-var monsterGroup : Array = []
+var party : Array
+var monsterGroup : Array
 
 signal battle_ended(party)
 signal Victory
@@ -29,18 +29,19 @@ func start_Battle() :
 
 # Transitions into combat
 func play_intro():
-	for fighter in TurnQueue.get_party() :
-		fighter.appear()
+	for person in TurnQueue.get_party() :
+		person.appear()
 	yield (get_tree().create_timer(0.5), "timeout")
-	for fighter in TurnQueue.get_monsters() :
-		fighter.appear()
+	for person in TurnQueue.get_monsters() :
+		person.appear()
 	yield(get_tree().create_timer(0.5), "timeout")
 
 # sets up the combat arena based on the party
 
 func ready_field(monster_buddies : Array, party_members : Array) :
+	
 	pass
-
+	
 func play_turn() :
 	pass
 

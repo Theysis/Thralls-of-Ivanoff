@@ -24,7 +24,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Warrior.gd"
 }, {
-"base": "Node2D",
+"base": "Fighters",
 "class": "Enemy",
 "language": "GDScript",
 "path": "res://Enemy.gd"

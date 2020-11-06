@@ -1,30 +1,75 @@
-extends Node2D
+extends Fighters
 
 class_name Enemy
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 
+var pName : String = ""
+var st : int = 0 # Strength Stat
+var agil : int = 0  # Agility
+var def : int = 0 # Defence
+var intel : int = 0 # Intelligence
+var maxHP : int = 0 # Health
+var maxMP : int = 0 # Magic Points / Ability Points
+var currentHP : int = 0
+var currentMP : int = 0
+
 func _intialize() :
-	pass
+	var person : Enemy = .get_child(0)
+	pName = person.getName()
+	st = person.getStrength()
+	agil = person.getAgility()
+	def = person.getDefence()
+	intel = person.getIntelligence()
+	maxHP = person.getHealth()
+	maxMP = person.getMana()
+	.setFighterStats(pName, maxHP, maxMP, st, agil, def, intel)
 
 func getName() -> String : 
-	return ""
+	return pName
 
-func getHealth() -> int :
-	return 0
+func setName(newName : String) :
+	pName = newName
 
-func getMana() -> int :
-	return 0
-	
+func getMaxHealth() -> int :
+	return maxHP
+
+func getCurrentHeath() :
+	return currentHP
+
+func setHeath(hp : int) :
+	currentHP = hp
+
+func getMaxMana() -> int :
+	return maxMP
+
+func getCurrentMana() -> int :
+	return currentMP
+
+func setMana(MP : int) :
+	currentMP = MP
+
 func getStrength() -> int :
-	return 0
+	return st
+
+func setStrength(new_Str : int) :
+	st = new_Str
 
 func getAgility() -> int :
-	return 0
+	return agil
+
+func setAgility(new_agil : int) :
+	agil = new_agil
 
 func getDefence() -> int :
-	return 0
-	
+	return def
+
+func setDefence(new_def : int) :
+	def = new_def
+
 func getIntelligence() -> int :
-	return 0
+	return intel
+
+func setIntelligence(new_intel : int) :
+	intel = new_intel
